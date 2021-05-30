@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsTwitter</title>
+    <title>Twitter_Clone</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -12,16 +12,18 @@
     <div class="wrapper">
     <header>
       <ul>
-        <li><a href="#">Twitter Clone</a></li>
-        <li><a href="#">To the top ()</a></li>
+        <li class="left"><a href="#">Twitter Clone</a></li>
+        <li class="left"><a href="#">Top page ()</a></li>
+        <li class="right"><a href="#">Login</a></li>
+        <li class="right"><a href="#">Sign Up</a></li>
       </ul>
     </header>
 
     <%= yield %>
 
     <footer>
-      <p>Hello</p>
-      <p>Something smart</p>
+      <p>Hello!</p>
+      <p>Something is happening</p>
     </footer>
    </div>
   </body>

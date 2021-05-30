@@ -1,0 +1,9 @@
+<h3> Post the following content.</h3>
+
+<%= form_with(model: @post, url: posts_path, local: true) do |form| %>
+  <%= form.hidden_field :content %>
+
+  <p>text:<%= @post.content %></p>
+  <% = form.submit "submit" %>
+  <%= form.submit "return", name: 'back' %>
+<% end %>
