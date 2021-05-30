@@ -4,7 +4,13 @@
     padding-bottom: 130px;
     box-sizing: border-box;
 }
-
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
 header{
   width: 100%;
   background-color: #1DA1F2;
@@ -18,7 +24,7 @@ header ul{
 
 header ul a{
   display: block;
-  padding: 15px;
+  padding: 18px;
   text-decoration: none;
   color: white;
 }
@@ -29,10 +35,10 @@ header ul a{
 .right {
   float: right;
 }
-.top_menu ul.right {
+.ul.right {
   float: left;
   width: auto;
-}  
+}
 
 header li{
   float: left;
@@ -43,6 +49,15 @@ header ul:after {
   content: "";
   display: block;
   clear: both;
+}
+.content {
+  min-height: 50px;
+  text-align: left;
+  padding: 5px;
+}
+p , h1 , h2 , h3 , h4 {
+  margin: 10;
+ font-weight: normal;
 }
 
 footer {
