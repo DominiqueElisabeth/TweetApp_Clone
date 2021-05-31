@@ -1,9 +1,15 @@
-<h3> Post the following content.</h3>
+<h3> Do you want to post the following content?</h3>
 
-<%= form_with(model: @post, url: posts_path, local: true) do |form| %>
+<%= form_with(model: @post,url: posts_path, local: true) do |form| %>
   <%= form.hidden_field :content %>
+  <p>
+    <strong>Content:</strong>
+    <%= @post.content %>
 
-  <p>text:<%= @post.content %></p>
-  <% = form.submit "submit" %>
-  <%= form.submit "return", name: 'back' %>
+  </p>
+  <div class="action">
+  <%= form.submit "Yes" %>
+  <%= form.submit "No", name: "back" %>
+  </div>
 <% end %>
+<p class="back"><%= link_to "back to list", posts_path, data: {"turbolinks" => false} %></p>
