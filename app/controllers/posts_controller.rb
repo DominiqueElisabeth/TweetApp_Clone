@@ -24,9 +24,12 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
 
     respond_to do |format|
-       @post.save
-        format.html { redirect_to posts_url, notice: "Do you want to post this tweet ?" }
-        format.json { head :no_content }
+      if @post.save
+        format.html { redirect_to @post, notice: "Post was successfully created." }
+        format.json { render :show, status: :created, location: @post }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -38,10 +41,15 @@ class PostsController < ApplicationController
         format.html { redirect_to @post, notice: "Post was successfully updated." }
         format.json { render :show, status: :ok, location: @post }
       else
-        format.html { redirect_to @post, notice: "Post was successfully updated." }
-        format.json { render :show, status: :ok, location: @post }
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def  confirm
+    @post = Post.new(post_params)
+    render :new if @post.invalid?
   end
 
   # DELETE /posts/1 or /posts/1.json
@@ -50,19 +58,9 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
       format.json { head :no_content }
+    end
   end
 
-    def  confirm
-      respond_to do |format|
-     @post.confirm (post_params)
-     format.html { redirect_to posts_url, notice: "Do you want to post this tweet ?" }
-     format.json { head :no_content }
- end
-
- def  show
-     @post = Post.new
-   end
-end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
