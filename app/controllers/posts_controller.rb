@@ -22,14 +22,13 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
-
-    respond_to do |format|
+    if params[:back]
+      render :new
+    else
       if @post.save
-        format.html { redirect_to @post, notice: "Post was successfully created." }
-        format.json { render :show, status: :created, location: @post }
+        redirect_to @post, notice: "Post was successfully created."
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+        render :new, status: :unprocessable_entity
       end
     end
   end
@@ -47,7 +46,7 @@ class PostsController < ApplicationController
     end
   end
 
-  def  confirm
+  def confirm
     @post = Post.new(post_params)
     render :new if @post.invalid?
   end

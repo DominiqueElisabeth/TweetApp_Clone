@@ -2,14 +2,11 @@
 
 <%= form_with(model: @post,url: posts_path, local: true) do |form| %>
   <%= form.hidden_field :content %>
-  <p>
-    <strong>Content:</strong>
+  <p><strong>Content:</strong>
     <%= @post.content %>
-
   </p>
   <div class="action">
   <%= form.submit "Yes" %>
-  <%= form.submit "No", name: "back" %>
+  <%= form.submit "No", name: 'back' %>
   </div>
 <% end %>
-<p class="back"><%= link_to "back to list", posts_path, data: {"turbolinks" => false} %></p>
